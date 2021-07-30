@@ -51,5 +51,5 @@ function validate() {
 
   console.log(firstValue, lastValue, emailValue, birthdateValue, quantityValue);
   console.log("Fin");
+  
 }
-
