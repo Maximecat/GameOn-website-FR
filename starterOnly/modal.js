@@ -34,13 +34,13 @@ function validate() {
   const quantityInput = document.querySelector("#quantity");
 
   const firstValue = firstInput.value;
-  if(firstValue || firstValue.lenght < 2) {
+  if(firstValue || firstValue.length < 2) {
     firstInput.parentElement.setAttribute("data-error-visible", true);
     firstInput.parentElement.setAttribute("data-error", "Le prénom est obligatoire et doit contenir 2 caractéres minimum");
   }
 
   const lastValue = lastInput.value;
-  if(lastValue || lastValue.lenght < 2) {
+  if(lastValue || lastValue.length < 2) {
     lastInput.parentElement.setAttribute("data-error-visible", true);
     lastInput.parentElement.setAttribute("data-error", "Le nom est obligatoire et doit contenir 2 caractéres minimum");
   }
