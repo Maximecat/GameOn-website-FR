@@ -15,6 +15,9 @@ const closeBtn = document.querySelectorAll(".close");
 const firstInput = document.querySelector("#first");
 const lastInput = document.querySelector("#last");
 const emailInput = document.querySelector("#email");
+const birthdateInput = document.querySelector("#birthdate");
+const quantityInput = document.querySelector("#quantity");
+
 
 // Launch modal events
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -34,24 +37,34 @@ function closeModal() {
 const inputConf = {
   // Paramétres de la clef pour le Prénom
   first: {
-    error:"Vous devez ecrire un prénom avec 2 caractéres minimum",
+    error:"Le prénom doit contenir uniquement des lettres, 2 au minimum",
     regExp:/^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Paramétres de la clef pour le Nom
   last: {
-    error:"Vous devez ecrire un nom avec 2 caractéres minimum",
+    error:"Le nom doit contenir uniquement des lettres, 2 au minimum",
     regExp:/^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Paramétres de la clef pour l'Email
   email: {
-    error:"Vous devez saisir un email valide",
+    error:"Vous devez saisir un email valide, exemple : aaa@gmail.bb",
     regExp:/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  },
+  // Paramétres de la clef pour la Date
+  birthdate: {
+    error:"Le format requis est : 'jj/mm/aaaa' ",
+    regExp:/^(\d{4})(\/|-)(\d{1,2})(\/|-)(\d{1,2})$/
+  },
+  // Paramétres de la clef pour le Nombre
+  quantity: {
+    error:"Ce champ doit contenir un nombre de participations",
+    regExp:/^\d$/
   }
 };
 
 // Ecoute la modification du Prénom
 firstInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.first);
+  validateByRegExp(event, inputConf.first)
 });
 // Ecoute la modification du Nom
 lastInput.addEventListener('change', function(event){
@@ -60,6 +73,14 @@ lastInput.addEventListener('change', function(event){
 // Ecoute la modification de l'Email
 emailInput.addEventListener('change', function(event){
   validateByRegExp(event, inputConf.email)
+});
+// Ecoute la modification de la Date
+birthdateInput.addEventListener('change', function(event){
+  validateByRegExp(event, inputConf.birthdate)
+});
+// Ecoute la modification du Nombre
+quantityInput.addEventListener('change', function(event){
+  validateByRegExp(event, inputConf.quantity)
 });
 
 // Validation d'un input donné en paramètre dans "event",
