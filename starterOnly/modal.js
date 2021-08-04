@@ -23,7 +23,7 @@ const quantityInput = document.querySelector("#quantity");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// launch modal form
+// Lancement de la modal
 function launchModal() {
   modalbg.style.display = "block";
 }
@@ -112,5 +112,9 @@ function validateByRegExp(event, conf) {
 
 // Validation du formulaire complet
 function validate() {
-  console.log("validation de tout le formulaire");
+  if(firstInput, lastInput, emailInput, birthdateInput, quantityInput) {
+    console.log("Prénom: " + firstInput.value + "Nom: " + lastInput.value + "Email: " + emailInput.value + "Birthday: " + birthdateInput.value + "Participations: " + quantityInput.value)
+  } else {
+    console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.")
+  }
 };
