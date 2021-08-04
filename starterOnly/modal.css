@@ -228,7 +228,7 @@ input {
 }
 
 .formData[valid] .text-control{
-  border: 2px solid #36b146;
+  border: 2px solid #36b146;;
 }
 /* 
 input[data-error]::after {
