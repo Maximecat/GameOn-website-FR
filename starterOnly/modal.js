@@ -37,26 +37,31 @@ function closeModal() {
 const inputConf = {
   // Paramétres de la clef pour le Prénom
   first: {
+    isValid: false,
     error:"Le prénom doit contenir uniquement des lettres, 2 au minimum",
     regExp:/^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Paramétres de la clef pour le Nom
   last: {
+    isValid: false,
     error:"Le nom doit contenir uniquement des lettres, 2 au minimum",
     regExp:/^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Paramétres de la clef pour l'Email
   email: {
+    isValid: false,
     error:"Vous devez saisir un email valide, exemple : aaa@gmail.bb",
     regExp:/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   },
   // Paramétres de la clef pour la Date
   birthdate: {
+    isValid: false,
     error:"Le format requis est : 'jj/mm/aaaa' ",
     regExp:/^(\d{4})(\/|-)(\d{1,2})(\/|-)(\d{1,2})$/
   },
   // Paramétres de la clef pour le Nombre
   quantity: {
+    isValid: false,
     error:"Ce champ doit contenir un nombre de participations",
     regExp:/^\d$/
   }
@@ -100,6 +105,8 @@ function validateByRegExp(event, conf) {
     event.srcElement.parentElement.removeAttribute("data-error-visible");
     // Supprime "data-error", car il n'y a pas d'erreur dans ce cas 
     event.srcElement.parentElement.removeAttribute("data-error");
+    // Modification de la valeur de "isValid" a true, validera le champ pour l'envoi du formulaire
+    inputConf.isValid = true;
   } else {
     // Supprime l'attribut "valid", car il y a une erreur
     event.srcElement.parentElement.removeAttribute("valid");
@@ -107,14 +114,17 @@ function validateByRegExp(event, conf) {
     event.srcElement.parentElement.setAttribute("data-error-visible", true);
     // On ajoute le message d'erreur correspondant a l'input testé
     event.srcElement.parentElement.setAttribute("data-error", conf.error);
+    // Laisse la valeur de "isValid" a false, ne validera pas le champ pour l'envoi du formulaire
+    inputConf.isValid = false;
   }
-}
+};
 
 // Validation du formulaire complet
 function validate() {
-  if(firstInput, lastInput, emailInput, birthdateInput, quantityInput) {
-    console.log("Prénom: " + firstInput.value + "Nom: " + lastInput.value + "Email: " + emailInput.value + "Birthday: " + birthdateInput.value + "Participations: " + quantityInput.value)
+  if(testValue = true) {
+    console.log("ok");
   } else {
-    console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.")
+    console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.");
+    e.preventDefault();
   }
 };
