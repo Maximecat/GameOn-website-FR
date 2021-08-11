@@ -19,6 +19,7 @@ const birthdateInput = document.querySelector("#birthdate");
 const quantityInput = document.querySelector("#quantity");
 
 
+
 // Launch modal events
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -69,30 +70,30 @@ const inputConf = {
 
 // Ecoute la modification du Prénom
 firstInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.first)
+  validateByRegExp(event.target, inputConf.first)
 });
 // Ecoute la modification du Nom
 lastInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.last)
+  validateByRegExp(event.target, inputConf.last)
 });
 // Ecoute la modification de l'Email
 emailInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.email)
+  validateByRegExp(event.target, inputConf.email)
 });
 // Ecoute la modification de la Date
 birthdateInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.birthdate)
+  validateByRegExp(event.target, inputConf.birthdate)
 });
 // Ecoute la modification du Nombre
 quantityInput.addEventListener('change', function(event){
-  validateByRegExp(event, inputConf.quantity)
+  validateByRegExp(event.target, inputConf.quantity)
 });
 
 // Validation d'un input donné en paramètre dans "event",
 // selon la configuration donnée en paramètre dans "conf"
-function validateByRegExp(event, conf) {
+function validateByRegExp(element, conf) {
   // Recupération de la valeur de l'input
-  const value = event.srcElement.value;
+  const value = element.value;
 
   // Test de la valeur selon la configuration donnée
   let testValue = conf.regExp.test(value);
@@ -100,31 +101,31 @@ function validateByRegExp(event, conf) {
   // Résultat du test des regExp pour les inputs
   if (testValue) {
     // Applique "valid",l'element sera donc entouré par du vert
-    event.srcElement.parentElement.setAttribute("valid", true);
+    element.parentElement.setAttribute("valid", true);
     // Supprime "data-error-visible", car il n'y a pas d'erreur dans ce cas
-    event.srcElement.parentElement.removeAttribute("data-error-visible");
+    element.parentElement.removeAttribute("data-error-visible");
     // Supprime "data-error", car il n'y a pas d'erreur dans ce cas 
-    event.srcElement.parentElement.removeAttribute("data-error");
+    element.parentElement.removeAttribute("data-error");
     // Modification de la valeur de "isValid" a true, validera le champ pour l'envoi du formulaire
-    inputConf.isValid = true;
+    conf.isValid = true;
   } else {
     // Supprime l'attribut "valid", car il y a une erreur
-    event.srcElement.parentElement.removeAttribute("valid");
+    element.parentElement.removeAttribute("valid");
     // Applique "data-error-visible",l'element sera donc entouré par du rouge
-    event.srcElement.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error-visible", true);
     // On ajoute le message d'erreur correspondant a l'input testé
-    event.srcElement.parentElement.setAttribute("data-error", conf.error);
+    element.parentElement.setAttribute("data-error", conf.error);
     // Laisse la valeur de "isValid" a false, ne validera pas le champ pour l'envoi du formulaire
-    inputConf.isValid = false;
+    conf.isValid = false;
   }
 };
 
 // Validation du formulaire complet
 function validate() {
-  if(testValue = true) {
-    console.log("ok");
+  const checkboxInput = document.querySelector("#checkbox1");
+  if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked) {
+      console.log("ok");
   } else {
     console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.");
-    e.preventDefault();
   }
 };
