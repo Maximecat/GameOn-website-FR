@@ -138,7 +138,8 @@ function validateByRegExp(element, conf) {
 function validate() {
 
   if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked) {
-      console.log("ok");
+    
+    console.log("ok");
   } else {
     console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.");
   }
