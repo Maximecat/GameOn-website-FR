@@ -17,6 +17,7 @@ const lastInput = document.querySelector("#last");
 const emailInput = document.querySelector("#email");
 const birthdateInput = document.querySelector("#birthdate");
 const quantityInput = document.querySelector("#quantity");
+const checkboxInput = document.querySelector(".checkbox-input");
 
 
 
@@ -120,9 +121,22 @@ function validateByRegExp(element, conf) {
   }
 };
 
+
+  const checkboxInput = document.querySelector(".checkbox-input");
+  const checkboxTown1 = document.querySelector("#location1");
+  const checkboxTown2 = document.querySelector("#location2");
+  const checkboxTown3 = document.querySelector("#location3");
+  const checkboxTown4 = document.querySelector("#location4");
+  const checkboxTown5 = document.querySelector("#location5");
+  const checkboxTown6 = document.querySelector("#location6");
+  const checkboxCondition1 = document.querySelector("#checkbox1");
+  const checkboxCondition2 = document.querySelector("#checkbox2");
+  const checkboxTownTab = [checkboxTown1, checkboxTown2, checkboxTown3, checkboxTown4, checkboxTown5, checkboxTown6] = false;
+  const checkConditionsTab = [checkboxCondition1, checkboxCondition2] = false;
+
 // Validation du formulaire complet
 function validate() {
-  const checkboxInput = document.querySelector("#checkbox1");
+
   if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked) {
       console.log("ok");
   } else {
