@@ -126,12 +126,17 @@ function validateByRegExp(element, conf) {
 function validate() {
 
 
-  const checkboxInput = document.getElementsByClassName("checkbox-input");
-  const submitBtn = document.getElementsByClassName("btn-submit");
+  const checkboxInput = document.getElementsByClassName('checkbox-input');
+  const submitBtn = document.getElementsByClassName('btn-submit');
 
-  checkboxInput.addEventListener('click', function() {
-    
-  });
+  for (var i = 0; i < checkboxInput.length; i++) {
+
+    if (checkboxInput[i].checked) break;
+
+  }
+
+  console.log(checkboxInput[i].value);
+
 
   if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked && submitBtn) {
     
