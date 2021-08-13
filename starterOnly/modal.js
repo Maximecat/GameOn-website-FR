@@ -134,15 +134,12 @@ function validate() {
     if (checkboxInput[i].checked) break;
 
   }
-
   console.log(checkboxInput[i].value);
 
 
   if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked && submitBtn) {
-    
     console.log("ok");
   } else {
-    
     console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.");
   }
 };
