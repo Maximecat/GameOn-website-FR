@@ -127,17 +127,20 @@ function validate() {
 
 
   const checkboxInput = document.getElementsByClassName('checkbox-input');
-  const submitBtn = document.getElementsByClassName('btn-submit');
+  const firstCoche = document.getElementsByClassName('checkbox1');
+  let isChecked = false;
 
   for (var i = 0; i < checkboxInput.length; i++) {
 
-    if (checkboxInput[i].checked) break;
+    if (checkboxInput[i].checked) 
+    isChecked = true;
+    break;
 
   }
   console.log(checkboxInput[i].value);
 
 
-  if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked && submitBtn) {
+  if(inputConf.first.isValid && inputConf.last.isValid && inputConf.email.isValid && inputConf.birthdate.isValid && inputConf.quantity.isValid && checkboxInput.checked && isChecked) {
     console.log("ok");
   } else {
     console.log("Le formulaire n'est pas complet, veuillez vérifier les champs erroné.");
