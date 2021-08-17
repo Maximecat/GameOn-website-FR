@@ -127,7 +127,7 @@ function validate() {
 
 
   const checkboxInput = document.getElementsByClassName('checkbox-input');
-  const firstCoche = document.getElementsByClassName('checkbox1');
+  const firstCoche = document.getElementById("checkbox1");
   let isChecked = false;
 
   for (var i = 0; i < checkboxInput.length; i++) {
