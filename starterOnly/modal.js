@@ -52,7 +52,7 @@ function validate() {
   if (nameRegExp.test(firstValue) && nameRegExp.test(lastValue) && emailRegExp.test(emailValue) && birthdateRegExp.test(birthdateValue) && quantityRegExp.test(quantityValue)) {
     console.log('ok');
   } else {
-    console.error('pas ok')
+    console.error('pas ok');
   }
 
   return false;
