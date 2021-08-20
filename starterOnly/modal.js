@@ -48,12 +48,56 @@ function validate() {
   let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let birthdateRegExp = /^(\d{4})(\/|-)(\d{1,2})(\/|-)(\d{1,2})$/
   let quantityRegExp = /^\d$/
+
+  const isFirstValid = nameRegExp.test(firstValue);
+  const isLastValid = nameRegExp.test(lastValue);
+  const isEmailValid = emailRegExp.test(emailValue);
+  const isBirthdateValid = birthdateRegExp.test(birthdateValue);
+  const isQuantityValid = quantityRegExp.test(quantityValue);
+
+  const errorMessage = {
+    // Clef message d'erreur pour le Prénom
+    first: {
+      error:"Le prénom doit contenir uniquement des lettres, 2 au minimum"
+    },
+    // Clef message d'erreur pour le Nom
+    last: {
+      error:"Le nom doit contenir uniquement des lettres, 2 au minimum"
+    },
+    // Clef message d'erreur pour l'Email
+    email: {
+      error:"Vous devez saisir un email valide, exemple : aaa@gmail.bb"
+    },
+    // Clef message d'erreur pour la date de naissance
+    birthdate: {
+      error:"Vous devez entrer votre date de naissance."
+    },
+    // Clef message d'erreur pour le nombre de participations
+    quantity: {
+      error:"Ce champ doit contenir un nombre de participations"
+    }
+  };
   
-  if (nameRegExp.test(firstValue) && nameRegExp.test(lastValue) && emailRegExp.test(emailValue) && birthdateRegExp.test(birthdateValue) && quantityRegExp.test(quantityValue)) {
-    console.log('ok');
-  } else {
-    console.error('pas ok');
+  if (!isFirstValid) {
+    element.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error", errorMessage.first.error);
   }
+  if (!isLastValid) {
+    element.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error", errorMessage.last.error);
+  }
+  if (!isEmailValid) {
+    element.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error", errorMessage.email.error);
+  }
+  if (!isBirthdateValid) {
+    element.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error", errorMessage.birthdate.error);
+  }
+  if (!isQuantityValid) {
+    element.parentElement.setAttribute("data-error-visible", true);
+    element.parentElement.setAttribute("data-error", errorMessage.quantity.error);
+  };
 
   return false;
 
