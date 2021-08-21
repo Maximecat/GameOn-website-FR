@@ -79,24 +79,24 @@ function validate() {
   };
   
   if (!isFirstValid) {
-    element.parentElement.setAttribute("data-error-visible", true);
-    element.parentElement.setAttribute("data-error", errorMessage.first.error);
+    firstInput.parentElement.setAttribute("data-error-visible", true);
+    firstInput.parentElement.setAttribute("data-error", errorMessage.first.error);
   }
   if (!isLastValid) {
-    element.parentElement.setAttribute("data-error-visible", true);
-    element.parentElement.setAttribute("data-error", errorMessage.last.error);
+    lastInput.parentElement.setAttribute("data-error-visible", true);
+    lastInput.parentElement.setAttribute("data-error", errorMessage.last.error);
   }
   if (!isEmailValid) {
-    element.parentElement.setAttribute("data-error-visible", true);
-    element.parentElement.setAttribute("data-error", errorMessage.email.error);
+    emailInput.parentElement.setAttribute("data-error-visible", true);
+    emailInput.parentElement.setAttribute("data-error", errorMessage.email.error);
   }
   if (!isBirthdateValid) {
-    element.parentElement.setAttribute("data-error-visible", true);
-    element.parentElement.setAttribute("data-error", errorMessage.birthdate.error);
+    birthdateInput.parentElement.setAttribute("data-error-visible", true);
+    birthdateInput.parentElement.setAttribute("data-error", errorMessage.birthdate.error);
   }
   if (!isQuantityValid) {
-    element.parentElement.setAttribute("data-error-visible", true);
-    element.parentElement.setAttribute("data-error", errorMessage.quantity.error);
+    quantityInput.parentElement.setAttribute("data-error-visible", true);
+    quantityInput.parentElement.setAttribute("data-error", errorMessage.quantity.error);
   };
 
   return false;
