@@ -79,24 +79,53 @@ function validate() {
   };
   
   if (!isFirstValid) {
+    firstInput.parentElement.removeAttribute("valid");
     firstInput.parentElement.setAttribute("data-error-visible", true);
     firstInput.parentElement.setAttribute("data-error", errorMessage.first.error);
+  }else{
+    firstInput.parentElement.removeAttribute("data-error-visible");
+    firstInput.parentElement.removeAttribute("data-error");
+    firstInput.parentElement.setAttribute("valid", true);
   }
+
   if (!isLastValid) {
+    lastInput.parentElement.removeAttribute("valid");
     lastInput.parentElement.setAttribute("data-error-visible", true);
     lastInput.parentElement.setAttribute("data-error", errorMessage.last.error);
+  }else{
+    lastInput.parentElement.removeAttribute("data-error-visible");
+    lastInput.parentElement.removeAttribute("data-error");
+    lastInput.parentElement.setAttribute("valid", true);
   }
+
   if (!isEmailValid) {
+    emailInput.parentElement.removeAttribute("valid");
     emailInput.parentElement.setAttribute("data-error-visible", true);
     emailInput.parentElement.setAttribute("data-error", errorMessage.email.error);
+  }else{
+    emailInput.parentElement.removeAttribute("data-error-visible");
+    emailInput.parentElement.removeAttribute("data-error");
+    emailInput.parentElement.setAttribute("valid", true);
   }
+
   if (!isBirthdateValid) {
+    birthdateInput.parentElement.removeAttribute("valid");
     birthdateInput.parentElement.setAttribute("data-error-visible", true);
     birthdateInput.parentElement.setAttribute("data-error", errorMessage.birthdate.error);
+  }else{
+    birthdateInput.parentElement.removeAttribute("data-error-visible");
+    birthdateInput.parentElement.removeAttribute("data-error");
+    birthdateInput.parentElement.setAttribute("valid", true);
   }
+
   if (!isQuantityValid) {
+    quantityInput.parentElement.removeAttribute("valid");
     quantityInput.parentElement.setAttribute("data-error-visible", true);
     quantityInput.parentElement.setAttribute("data-error", errorMessage.quantity.error);
+  }else{
+    quantityInput.parentElement.removeAttribute("data-error-visible");
+    quantityInput.parentElement.removeAttribute("data-error");
+    quantityInput.parentElement.setAttribute("valid", true);
   };
 
   return false;
