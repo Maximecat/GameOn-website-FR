@@ -36,7 +36,9 @@ function validate() {
   const emailInput = document.getElementById('email');
   const birthdateInput = document.getElementById('birthdate');
   const quantityInput = document.getElementById('quantity');
-  const radioInput = document.getElementsByName('location'); 
+  const radioInput = document.getElementsByName('location');
+  const firstCheckboxInput = document.getElementById('checkbox1');
+  const secondCheckboxInput = document.getElementById('checkbox2');
 
   let firstValue = firstInput.value;
   let lastValue = lastInput.value;
@@ -138,7 +140,25 @@ function validate() {
       return radioInput[i].value;
 
     }
-  }
+  };
+
+  if(firstCheckboxInput.checked==true && secondCheckboxInput.checked==true) {
+    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
+    return true;
+
+  }else if(firstCheckboxInput.checked==true && secondCheckboxInput.checked==false) {
+    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
+    return true;
+
+  }else if(firstCheckboxInput.checked==false && secondCheckboxInput.checked==true) {
+    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
+    return false;
+
+  }else if(firstCheckboxInput.checked==false && secondCheckboxInput.checked==false) {
+    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
+    return false;
+
+  };
 
   return false;
 
