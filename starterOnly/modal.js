@@ -28,7 +28,6 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
 // Validation du formulaire complet
 function validate() {
 
@@ -37,6 +36,7 @@ function validate() {
   const emailInput = document.getElementById('email');
   const birthdateInput = document.getElementById('birthdate');
   const quantityInput = document.getElementById('quantity');
+  const checkboxInput = document.getElementsByName('location');
 
   let firstValue = firstInput.value;
   let lastValue = lastInput.value;
@@ -70,11 +70,14 @@ function validate() {
     },
     // Clef message d'erreur pour la date de naissance
     birthdate: {
-      error:"Vous devez entrer votre date de naissance."
+      error:"Vous devez entrer votre date de naissance"
     },
     // Clef message d'erreur pour le nombre de participations
     quantity: {
       error:"Ce champ doit contenir un nombre de participations"
+    },
+    radio: {
+      error:"Veuillez sélectionné une ville"
     }
   };
   
@@ -127,6 +130,15 @@ function validate() {
     quantityInput.parentElement.removeAttribute("data-error");
     quantityInput.parentElement.setAttribute("valid", true);
   };
+
+  for (var i = 0; i < checkboxInput.length; i++) {
+
+    if (checkboxInput[i].checked) {
+
+      return checkboxInput[i].value;
+
+    }
+  }
 
   return false;
 
