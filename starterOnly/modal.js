@@ -37,14 +37,15 @@ function validate() {
   const birthdateInput = document.getElementById('birthdate');
   const quantityInput = document.getElementById('quantity');
   const radioInput = document.getElementsByName('location');
+  const radioGroup = document.getElementById('radiogroup');
   const firstCheckboxInput = document.getElementById('checkbox1');
-  const secondCheckboxInput = document.getElementById('checkbox2');
 
   let firstValue = firstInput.value;
   let lastValue = lastInput.value;
   let emailValue = emailInput.value;
   let birthdateValue = birthdateInput.value;
   let quantityValue = quantityInput.value;
+  let radioValue = null;
 
   let nameRegExp = /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/;
   let emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -56,6 +57,15 @@ function validate() {
   const isEmailValid = emailRegExp.test(emailValue);
   const isBirthdateValid = birthdateRegExp.test(birthdateValue);
   const isQuantityValid = quantityRegExp.test(quantityValue);
+  const isFirstChecked = firstCheckboxInput.checked;
+
+  for (var i = 0; i < radioInput.length; i++) {
+
+    if (radioInput[i].checked) {
+      radioValue = radioInput[i].value;
+      break;
+    }
+  };
 
   const errorMessage = {
     // Clef message d'erreur pour le Prénom
@@ -80,6 +90,9 @@ function validate() {
     },
     radio: {
       error:"Veuillez sélectionné une ville"
+    },
+    checkbox: {
+      error:"Vous devez accepté les conditions général d'utilisation"
     }
   };
   
@@ -131,34 +144,36 @@ function validate() {
     quantityInput.parentElement.removeAttribute("data-error-visible");
     quantityInput.parentElement.removeAttribute("data-error");
     quantityInput.parentElement.setAttribute("valid", true);
-  };
+  }
 
-  for (var i = 0; i < radioInput.length; i++) {
+  if(!radioValue) {
+    radioGroup.parentElement.removeAttribute("valid");
+    radioGroup.parentElement.setAttribute("data-error-visible", true);
+    radioGroup.parentElement.setAttribute("data-error", errorMessage.radio.error);
+  }else{
+    radioGroup.parentElement.removeAttribute("data-error-visible");
+    radioGroup.parentElement.removeAttribute("data-error");
+    radioGroup.parentElement.setAttribute("valid", true);
+  }
 
-    if (radioInput[i].checked) {
+  if(!isFirstChecked) {
+    firstCheckboxInput.parentElement.removeAttribute("valid");
+    firstCheckboxInput.parentElement.setAttribute("data-error-visible", true);
+    firstCheckboxInput.parentElement.setAttribute("data-error", errorMessage.checkbox.error);
+  }else{
+    firstCheckboxInput.parentElement.removeAttribute("data-error-visible");
+    firstCheckboxInput.parentElement.removeAttribute("data-error");
+    firstCheckboxInput.parentElement.setAttribute("valid", true);
+  }
 
-      return radioInput[i].value;
+  if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
+    console.log('formulaire valide');
+    //Indiquer a l'utilisateur que le formulaire es valide
 
-    }
-  };
+    
+    //Fermer la modal
 
-  if(firstCheckboxInput.checked==true && secondCheckboxInput.checked==true) {
-    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
-    return true;
-
-  }else if(firstCheckboxInput.checked==true && secondCheckboxInput.checked==false) {
-    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
-    return true;
-
-  }else if(firstCheckboxInput.checked==false && secondCheckboxInput.checked==true) {
-    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
-    return false;
-
-  }else if(firstCheckboxInput.checked==false && secondCheckboxInput.checked==false) {
-    console.log(firstCheckboxInput.checked + " " + secondCheckboxInput.checked);
-    return false;
-
-  };
+  }
 
   return false;
 
