@@ -82,7 +82,7 @@ function validate() {
     },
     // Clef message d'erreur pour la date de naissance
     birthdate: {
-      error:"Vous devez entrer votre date de naissance"
+      error:"Vous devez entrer vôtre date de naissance"
     },
     // Clef message d'erreur pour le nombre de participations
     quantity: {
@@ -169,10 +169,10 @@ function validate() {
   if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
     console.log('formulaire valide');
     //Indiquer a l'utilisateur que le formulaire es valide
-
+    alert('Merci vos informations sont enregistré !');
     
     //Fermer la modal
-
+    closeModal();
   }
 
   return false;
