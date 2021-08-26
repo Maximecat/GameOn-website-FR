@@ -169,7 +169,7 @@ function validate() {
   if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
     console.log('formulaire valide');
     //Indiquer a l'utilisateur que le formulaire es valide
-    alert('Merci vos informations sont enregistré !');
+    alert('Merci vos informations on bien été enregistré !');
     
     //Fermer la modal
     closeModal();
