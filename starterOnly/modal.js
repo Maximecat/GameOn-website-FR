@@ -97,79 +97,24 @@ function validate() {
     }
   };
   
-  if (!isFirstValid) {
-    firstInput.parentElement.removeAttribute("valid");
-    firstInput.parentElement.setAttribute("data-error-visible", true);
-    firstInput.parentElement.setAttribute("data-error", errorMessage.first.error);
-  }else{
-    firstInput.parentElement.removeAttribute("data-error-visible");
-    firstInput.parentElement.removeAttribute("data-error");
-    firstInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isFirstValid, firstInput, errorMessage.first.error);
 
-  if (!isLastValid) {
-    lastInput.parentElement.removeAttribute("valid");
-    lastInput.parentElement.setAttribute("data-error-visible", true);
-    lastInput.parentElement.setAttribute("data-error", errorMessage.last.error);
-  }else{
-    lastInput.parentElement.removeAttribute("data-error-visible");
-    lastInput.parentElement.removeAttribute("data-error");
-    lastInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isLastValid, lastInput, errorMessage.last.error);
 
-  if (!isEmailValid) {
-    emailInput.parentElement.removeAttribute("valid");
-    emailInput.parentElement.setAttribute("data-error-visible", true);
-    emailInput.parentElement.setAttribute("data-error", errorMessage.email.error);
-  }else{
-    emailInput.parentElement.removeAttribute("data-error-visible");
-    emailInput.parentElement.removeAttribute("data-error");
-    emailInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isEmailValid, emailInput, errorMessage.email.error);
 
-  if (!isBirthdateValid) {
-    birthdateInput.parentElement.removeAttribute("valid");
-    birthdateInput.parentElement.setAttribute("data-error-visible", true);
-    birthdateInput.parentElement.setAttribute("data-error", errorMessage.birthdate.error);
-  }else{
-    birthdateInput.parentElement.removeAttribute("data-error-visible");
-    birthdateInput.parentElement.removeAttribute("data-error");
-    birthdateInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isBirthdateValid, birthdateInput, errorMessage.birthdate.error);
 
-  if (!isQuantityValid) {
-    quantityInput.parentElement.removeAttribute("valid");
-    quantityInput.parentElement.setAttribute("data-error-visible", true);
-    quantityInput.parentElement.setAttribute("data-error", errorMessage.quantity.error);
-  }else{
-    quantityInput.parentElement.removeAttribute("data-error-visible");
-    quantityInput.parentElement.removeAttribute("data-error");
-    quantityInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isQuantityValid, quantityInput, errorMessage.quantity.error);
 
-  if(!radioValue) {
-    radioGroup.parentElement.removeAttribute("valid");
-    radioGroup.parentElement.setAttribute("data-error-visible", true);
-    radioGroup.parentElement.setAttribute("data-error", errorMessage.radio.error);
-  }else{
-    radioGroup.parentElement.removeAttribute("data-error-visible");
-    radioGroup.parentElement.removeAttribute("data-error");
-    radioGroup.parentElement.setAttribute("valid", true);
-  }
+  validateInput(radioValue, radioGroup, errorMessage.radio.error);
 
-  if(!isFirstChecked) {
-    firstCheckboxInput.parentElement.removeAttribute("valid");
-    firstCheckboxInput.parentElement.setAttribute("data-error-visible", true);
-    firstCheckboxInput.parentElement.setAttribute("data-error", errorMessage.checkbox.error);
-  }else{
-    firstCheckboxInput.parentElement.removeAttribute("data-error-visible");
-    firstCheckboxInput.parentElement.removeAttribute("data-error");
-    firstCheckboxInput.parentElement.setAttribute("valid", true);
-  }
+  validateInput(isFirstChecked, firstCheckboxInput, errorMessage.checkbox.error);
+
 
   if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
     const bodyHeight = modalBody.offsetHeight;
-    
+
     modalBody.innerHTML='<div class="merci"> Merci, vos informations ont été enregistrés ! A bientôt sur GameOn</div>';
     modalBody.style.height= bodyHeight + "px";
   }
@@ -177,3 +122,15 @@ function validate() {
   return false;
 
 };
+
+function validateInput(isValid, inputElement, errorMessage) {
+  if (!isValid) {
+    inputElement.parentElement.removeAttribute("valid");
+    inputElement.parentElement.setAttribute("data-error-visible", true);
+    inputElement.parentElement.setAttribute("data-error", errorMessage);
+  }else{
+    inputElement.parentElement.removeAttribute("data-error-visible");
+    inputElement.parentElement.removeAttribute("data-error");
+    inputElement.parentElement.setAttribute("valid", true);
+  }
+}
