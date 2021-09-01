@@ -33,89 +33,93 @@ function closeModal() {
 const inputsConf = {
   // Clef configuration pour le Prénom
   first: {
+    isValid: false,
+    input: document.getElementById('first'),
     error:"Le prénom doit contenir uniquement des lettres, 2 au minimum",
     regExp: /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Clef configuration pour le Nom
   last: {
+    isValid: false,
+    input: document.getElementById('last'),
     error:"Le nom doit contenir uniquement des lettres, 2 au minimum",
     regExp: /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/
   },
   // Clef configuration pour l'Email
   email: {
+    isValid: false,
+    input: document.getElementById('email'),
     error:"Vous devez saisir un email valide, exemple : aaa@gmail.bb",
     regExp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   },
   // Clef configuration pour la date de naissance
   birthdate: {
+    isValid: false,
+    input: document.getElementById('birthdate'),
     error:"Vous devez entrer vôtre date de naissance",
     regExp: /^(\d{4})(\/|-)(\d{1,2})(\/|-)(\d{1,2})$/
   },
   // Clef configuration pour le nombre de participations
   quantity: {
+    isValid: false,
+    input: document.getElementById('quantity'),
     error:"Ce champ doit contenir un nombre de participations",
     regExp: /^\d$/
   },
   radio: {
+    isValid: false,
+    input: document.getElementsByName('location'),
     error:"Veuillez sélectionné une ville",
     regExp : null
   },
   checkbox: {
+    isValid: false,
+    input: document.getElementById('checkbox1'),
     error:"Vous devez accepté les conditions général d'utilisation",
     regExp: null
   }
 };
 
-const firstInput = document.getElementById('first');
-const lastInput = document.getElementById('last');
-const emailInput = document.getElementById('email');
-const birthdateInput = document.getElementById('birthdate');
-const quantityInput = document.getElementById('quantity');
-const radioInput = document.getElementsByName('location');
-const radioGroup = document.getElementById('radiogroup');
-const firstCheckboxInput = document.getElementById('checkbox1');
-
 // Validation du formulaire complet
 function validate() {
 
-  const firstValue = firstInput.value;
-  const lastValue = lastInput.value;
-  const emailValue = emailInput.value;
-  const birthdateValue = birthdateInput.value;
-  const quantityValue = quantityInput.value;
-  let radioValue = null;
+  const firstValue = inputsConf.first.input.value;
+  const lastValue = inputsConf.last.input.value;
+  const emailValue = inputsConf.email.input.value;
+  const birthdateValue = inputsConf.birthdate.input.value;
+  const quantityValue = inputsConf.quantity.input.value;
 
-  const isFirstValid = inputsConf.first.regExp.test(firstValue);
-  const isLastValid = inputsConf.last.regExp.test(lastValue);
-  const isEmailValid = inputsConf.email.regExp.test(emailValue);
-  const isBirthdateValid = inputsConf.birthdate.regExp.test(birthdateValue);
-  const isQuantityValid = inputsConf.quantity.regExp.test(quantityValue);
-  const isFirstChecked = firstCheckboxInput.checked;
+  inputsConf.first.isValid = inputsConf.first.regExp.test(firstValue);
+  inputsConf.last.isValid = inputsConf.last.regExp.test(lastValue);
+  inputsConf.email.isValid = inputsConf.email.regExp.test(emailValue);
+  inputsConf.birthdate.isValid = inputsConf.birthdate.regExp.test(birthdateValue);
+  inputsConf.quantity.isValid = inputsConf.quantity.regExp.test(quantityValue);
+  inputsConf.checkbox.isValid = inputsConf.checkbox.input.checked;
 
-  for (var i = 0; i < radioInput.length; i++) {
-
-    if (radioInput[i].checked) {
-      radioValue = radioInput[i].value;
+  for (var i = 0; i < inputsConf.radio.input.length; i++) {
+    if (inputsConf.radio.input[i].checked) {
+      inputsConf.radio.isValid = inputsConf.radio.input[i].value;
       break;
     }
   };
+
+  for (const key in inputsConf) {
+    if(inputsConf[key].regExp) {
+      console.log(key)
+      console.log(inputsConf[key])
+      validateInput(inputsConf[key].isValid, inputsConf[key].input, inputsConf[key].error)
+    }
+  }
   
-  validateInput(isFirstValid, firstInput, inputsConf.first.error);
-
-  validateInput(isLastValid, lastInput, inputsConf.last.error);
-
-  validateInput(isEmailValid, emailInput, inputsConf.email.error);
-
-  validateInput(isBirthdateValid, birthdateInput, inputsConf.birthdate.error);
-
-  validateInput(isQuantityValid, quantityInput, inputsConf.quantity.error);
-
-  validateInput(radioValue, radioGroup, inputsConf.radio.error);
-
-  validateInput(isFirstChecked, firstCheckboxInput, inputsConf.checkbox.error);
-
-
-  if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
+  if(
+    inputsConf.first.isValid && 
+    inputsConf.last.isValid &&
+    inputsConf.email.isValid &&
+    inputsConf.birthdate.isValid &&
+    inputsConf.quantity.isValid &&
+    inputsConf.radio.isValid &&
+    inputsConf.checkbox.isValid
+  ) {
     const bodyHeight = modalBody.offsetHeight;
 
     modalBody.innerHTML='<div class="merci"> Merci, vos informations ont été enregistrés ! A bientôt sur GameOn</div>';
