@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
+const modalBody = document.querySelector(".modal-body");
 
 
 // Launch modal events
@@ -167,12 +168,10 @@ function validate() {
   }
 
   if(isFirstValid && isLastValid && isEmailValid && isBirthdateValid && isQuantityValid && isFirstChecked && radioValue) {
-    console.log('formulaire valide');
-    //Indiquer a l'utilisateur que le formulaire es valide
-    alert('Merci vos informations on bien été enregistré !');
+    const bodyHeight = modalBody.offsetHeight;
     
-    //Fermer la modal
-    closeModal();
+    modalBody.innerHTML='<div class="merci"> Merci, vos informations ont été enregistrés ! A bientôt sur GameOn</div>';
+    modalBody.style.height= bodyHeight + "px";
   }
 
   return false;
