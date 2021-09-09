@@ -54,12 +54,16 @@ img {
 
 .topnav a:hover {
   background-color: #ff0000;
+  text-decoration: underline 1px white;
+  text-underline-position: under;
   color: #ffffff;
   border-radius: 15px;
 }
 
 .topnav a.active {
   background-color: #ff0000;
+  text-decoration: underline 1px white;
+  text-underline-position: under;
   color: #ffffff;
   border-radius: 15px;
 }
