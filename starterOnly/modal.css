@@ -252,7 +252,7 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 1px solid #279e7a;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -413,7 +413,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -422,13 +421,13 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 50px 50px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  min-width: 400px;
 }
 .hero-content::after {
   content: "";
@@ -470,6 +469,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -505,10 +505,12 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    text-align: center;
   }
   .hero-text {
-    width: unset;
+    width: auto;
     font-size: 1.5rem;
+    text-align: center;
   }
   .hero-img img {
     border-radius: 10px;
