@@ -59,7 +59,7 @@ const inputsConf = {
   email: {
     isValid: false,
     input: document.getElementById('email'),
-    error:"Vous devez saisir un email valide, exemple : aaa@gmail.bb",
+    error:"Vous devez saisir un email valide, exemple : aaa@gmail.fr",
     regExp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   },
   /* Clef pour la date de naissance et ses configurations */
@@ -149,8 +149,11 @@ function validate() {
   ) {
     const bodyHeight = modalBody.offsetHeight;
 
-    modalBody.innerHTML='<div class="merci"> Merci, vos informations ont été enregistrés ! A bientôt sur GameOn</div>';
+    modalBody.innerHTML="<div class='remerciement'> Merci, vos informations ont été enregistrés ! A bientôt sur <img class='logo-merci' src='Logo.png'> </div>" + "<button class='btn-close-merci'> Fermer </button>";
     modalBody.style.height= bodyHeight + "px";
+
+    const closeBtnMerci = document.querySelectorAll(".btn-close-merci");
+    closeBtnMerci.forEach((btn) => btn.addEventListener("click", closeModal));
   }
 
   return false;
