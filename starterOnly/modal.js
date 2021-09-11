@@ -123,7 +123,7 @@ function validate() {
   };
 
   /*
-  * Pour toutes les clefs dans notre objet inputsConf si on test une regExp sur notre valeur, faire appel a la fonction validateInput
+  * Pour toutes les clefs dans notre objet inputsConf si on peut testé une regExp sur notre valeur, faire appel a la fonction validateInput
   */
   for (const key in inputsConf) {
     if(inputsConf[key].regExp) {
