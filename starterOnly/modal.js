@@ -87,7 +87,7 @@ const inputsConf = {
   checkbox: {
     isValid: false,
     input: document.getElementById('checkbox1'),
-    error:"Vous devez accepté les conditions général d'utilisation",
+    error:"Vous devez vérifier que vous acceptez les termes et conditions",
     regExp: null
   }
 };
