@@ -135,8 +135,10 @@ function validate() {
   
   /*
   * Si les valeur de tout les inputs corresponde aux conditions et retourne 'true',
-  * Création d'une <div> avec une string de remerciement
-  * Application d'un style a cette <div> en reprenant la hauteur de base de la modal
+  * Création d'une <div> avec une string de remerciement,
+  * Application d'un style a cette <div> en reprenant la hauteur de base de la modal,
+  * Récupération du bouton "Fermer" crée dans cette même div,
+  * Application d'une écoute pour la fermeture au clique du bouton "Fermer"
   */
   if(
     inputsConf.first.isValid && 
