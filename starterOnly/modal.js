@@ -16,7 +16,6 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 const modalBody = document.querySelector(".modal-body");
 
-
 /*
 * Ajouts d'évènements au clique pour le lancement et la fermeture de la modal
 */
@@ -144,8 +143,6 @@ function validate() {
   }
 
   return false;
-
-
 };
 
 /*
