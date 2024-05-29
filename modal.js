@@ -8,7 +8,7 @@ function editNav() {
 }
 
 /*
-* Récupération des éléments HTML / DOM 
+* Récupération des élémeents HTML / DOM 
 */
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
