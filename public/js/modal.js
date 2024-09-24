@@ -175,7 +175,7 @@ function displayThanks() {
 
   modalBody.innerHTML = `
     <div class="remerciement">
-      Merci, vos informations ont été enregistrés ! A bientôt sur <img class='logo-merci' src='/public/img/Logo.png'>
+      Merci, vos informations ont été enregistrés ! A bientôt sur <img class='logo-merci' src='./public/img/Logo.png'>
     </div>
     <button class="btn-submit" id="btn-close-merci"> Fermer </button>
     `;
