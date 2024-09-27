@@ -1,7 +1,3 @@
-# Projet GameOn
-- Il n'y a aucune dépendance ;
-- Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
-
 # ![Logo GameOn](public/img/Logo.png)
 
 ## Objectif(s)
