@@ -25,6 +25,7 @@ Votre mission principale sera de réaliser un formulaire avec JavaScript. Avec �
 
 ### Cahier des charges
 - Le développement devra se faire en JavaScript Vanilla, le JavaScript pur sans l'utilisation de bibliothèques ou de frameworks.
+- N'utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 - S'assurer de la validation du formulaire pour garantir que les données saisies par les utilisateurs sont correctes et répondent aux critères établis.
 - Gérer également les événements JavaScript, tels que les clics de bouton ou les entrées de formulaire, pour créer une interaction dynamique avec les utilisateurs.
 - Les maquettes du projet seront sur Figma, Visual Studio Code pour l'écriture et la gestion du code, et GitHub pour le versionnement de votre projet.
